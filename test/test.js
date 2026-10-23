@@ -13,4 +13,10 @@ describe('GET /', () => {
     const response = await request(app).get('/');
     expect(response.text).to.equal('Hello, GitHub Actions!');
   });
+
+  it('returns health status', async () => {
+  const response = await request(app).get('/health');
+  expect(response.status).to.equal(200);
+  expect(response.text).to.equal('OK');
+  });
 });
